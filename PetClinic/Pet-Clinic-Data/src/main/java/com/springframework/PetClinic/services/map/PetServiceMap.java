@@ -3,11 +3,9 @@
  */
 package com.springframework.PetClinic.services.map;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 import java.util.Set;
 
-import com.springframework.PetClinic.Model.Owner;
 import com.springframework.PetClinic.Model.Pet;
 import com.springframework.PetClinic.services.CrudService;
 
