@@ -59,14 +59,14 @@ public class DataLoad implements CommandLineRunner {
 		vet1.setFirstName("John");
 		vet1.setLastName("Doolittle");
 		
-		System.out.println("Vets Saved ...");
+		System.out.println("Vet Saved ...");
 		
 		Vet vet2 = new Vet();
 		vet2.setId(2L);
 		vet2.setFirstName("Pet");
 		vet2.setLastName("Doctor");
 		
-		System.out.println("Vets Saved....");
+		System.out.println("Vet Saved....");
 
 	}
 
