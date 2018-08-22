@@ -3,6 +3,7 @@
  */
 package com.springframework.PetClinic.bootstrap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -26,11 +27,22 @@ public class DataLoad implements CommandLineRunner {
 	//private final PetService petService;
 	private final VetService vetService;
 
-	public DataLoad() {
-		ownerService = new OwnerServiceMap();
-		//petService = new PetServiceMap();
-		vetService = new VetServiceMap();
+	
+
+
+
+	/**
+	 * @param ownerService
+	 * @param vetService
+	 */
+	@Autowired
+	public DataLoad(OwnerService ownerService, VetService vetService) {
+		super();
+		this.ownerService = ownerService;
+		this.vetService = vetService;
 	}
+
+
 
 
 
