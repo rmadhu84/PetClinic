@@ -7,12 +7,13 @@ import java.util.Set;
 
 import com.springframework.PetClinic.Model.Vet;
 import com.springframework.PetClinic.services.CrudService;
+import com.springframework.PetClinic.services.VetService;
 
 /**
  * @author Madhu
  *
  */
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long>{
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService{
 
 	/** (non-Javadoc)
 	 * @see com.springframework.PetClinic.services.CrudService#findAll()

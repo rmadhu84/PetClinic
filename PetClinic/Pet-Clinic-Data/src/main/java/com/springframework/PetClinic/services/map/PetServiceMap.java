@@ -8,12 +8,13 @@ import java.util.Set;
 
 import com.springframework.PetClinic.Model.Pet;
 import com.springframework.PetClinic.services.CrudService;
+import com.springframework.PetClinic.services.PetService;
 
 /**
  * @author Madhu
  *
  */
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long>{
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService{
 
 	/**
 	 * Implementing CrudService method findById(Long)
