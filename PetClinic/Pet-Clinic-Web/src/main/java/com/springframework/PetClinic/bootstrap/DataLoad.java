@@ -50,7 +50,7 @@ public class DataLoad implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		Owner owner1 = new Owner();
-		owner1.setId(1L);
+//		owner1.setId(1L);
 		owner1.setFirstName("Madhu");
 		owner1.setLastName("Ram");
 		
@@ -58,7 +58,7 @@ public class DataLoad implements CommandLineRunner {
 		System.out.println("Owner Saved....");
 		
 		Owner owner2 = new Owner();
-		owner2.setId(2L);
+//		owner2.setId(2L);
 		owner2.setFirstName("Surekha");
 		owner2.setLastName("Veera");
 		
@@ -67,14 +67,14 @@ public class DataLoad implements CommandLineRunner {
 		System.out.println("Owner Saved....");
 		
 		Vet vet1 = new Vet();
-		vet1.setId(1L);
+//		vet1.setId(1L);
 		vet1.setFirstName("John");
 		vet1.setLastName("Doolittle");
 		vetService.save(vet1);
 		System.out.println("Vet Saved ...");
 		
 		Vet vet2 = new Vet();
-		vet2.setId(2L);
+//		vet2.setId(2L);
 		vet2.setFirstName("Pet");
 		vet2.setLastName("Doctor");
 		vetService.save(vet2);

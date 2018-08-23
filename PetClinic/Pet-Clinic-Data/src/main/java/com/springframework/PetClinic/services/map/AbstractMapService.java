@@ -3,10 +3,12 @@
  */
 package com.springframework.PetClinic.services.map;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import com.springframework.PetClinic.Model.BaseEntity;
@@ -17,37 +19,44 @@ import com.springframework.PetClinic.Model.BaseEntity;
  */
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-	protected Map<Long, T> map = new HashMap<>();
+	Long ID;
 	
+	protected Map<Long, T> map = new HashMap<>();
+
 	Set<T> findAll(){
 		return new HashSet<>(map.values());
 	}
-	
+
 	T findById(ID id) {
 		return map.get(id);
 	}
-	
-//	T save(ID id, T object) {
+
+	//	T save(ID id, T object) {
 	T save(T object) {
 		if(object != null) {
 			if(object.getId() == null) {
-				object.setId(getNextId());
+				object.setId(this.getNextId());
 				map.put(object.getId(), object);
 			}
 		}
-//		 map.put(id, object);
-		 return object;
+		//		 map.put(id, object);
+		return object;
 	}
-	
+
 	void deleteById(ID id) {
 		map.remove(id);
 	}
-	
+
 	void delete(T object) {
 		map.entrySet().removeIf(entry -> entry.getValue().equals(object));
 	}
-	
+
 	private Long getNextId() {
-		return Collections.max(map.keySet()) + 1;
+		try {
+			return Collections.max(map.keySet()) + 1;
+		}
+		catch(NoSuchElementException e) {
+			return 1L;
+		}
 	}
 }
