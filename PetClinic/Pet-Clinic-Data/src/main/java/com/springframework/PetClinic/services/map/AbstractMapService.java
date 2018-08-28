@@ -3,7 +3,6 @@
  */
 package com.springframework.PetClinic.services.map;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,9 +16,8 @@ import com.springframework.PetClinic.Model.BaseEntity;
  * @author Madhu
  *
  */
-public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+public abstract class AbstractMapService<T extends BaseEntity, ID> {
 
-	Long ID;
 	
 	protected Map<Long, T> map = new HashMap<>();
 
@@ -38,6 +36,9 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 				object.setId(this.getNextId());
 				map.put(object.getId(), object);
 			}
+		}
+		else {
+			throw new RuntimeException("Object cannot be null");
 		}
 		//		 map.put(id, object);
 		return object;
