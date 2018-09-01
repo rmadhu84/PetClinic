@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.springframework.PetClinic.Model.Owner;
+import com.springframework.PetClinic.Model.PetType;
 import com.springframework.PetClinic.Model.Vet;
 import com.springframework.PetClinic.services.OwnerService;
 import com.springframework.PetClinic.services.PetService;
+import com.springframework.PetClinic.services.PetTypeService;
 import com.springframework.PetClinic.services.VetService;
 import com.springframework.PetClinic.services.map.OwnerServiceMap;
 import com.springframework.PetClinic.services.map.PetServiceMap;
@@ -26,29 +28,37 @@ public class DataLoad implements CommandLineRunner {
 	private final OwnerService ownerService;
 	//private final PetService petService;
 	private final VetService vetService;
-
-	
-
+	private final PetTypeService petTypeService;
 
 
 	/**
 	 * @param ownerService
 	 * @param vetService
+	 * @param petTypeService
 	 */
-	@Autowired
-	public DataLoad(OwnerService ownerService, VetService vetService) {
+	public DataLoad(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
 		super();
 		this.ownerService = ownerService;
 		this.vetService = vetService;
+		this.petTypeService = petTypeService;
 	}
-
-
-
 
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+
+		
+		PetType dog = new PetType();
+		dog.setName("Dog");
+		dog = petTypeService.save(dog);
+		System.out.println("Dog Pet Type Created...");
+		
+		PetType cat = new PetType();
+		cat.setName("Cat");
+		cat = petTypeService.save(cat);
+		System.out.println("Cat Pet Type Created...");
+		
+		
 		Owner owner1 = new Owner();
 //		owner1.setId(1L);
 		owner1.setFirstName("Madhu");
