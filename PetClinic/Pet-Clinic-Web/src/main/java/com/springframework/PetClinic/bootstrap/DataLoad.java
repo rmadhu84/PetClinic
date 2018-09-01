@@ -79,6 +79,10 @@ public class DataLoad implements CommandLineRunner {
 		vet2.setLastName("Doctor");
 		vetService.save(vet2);
 		System.out.println("Vet Saved....");
+		
+		for(Vet v : vetService.findAll()) {
+			System.out.println(v.getFirstName());
+		}
 
 	}
 
