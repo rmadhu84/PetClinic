@@ -3,7 +3,8 @@
  */
 package com.springframework.PetClinic.Model;
 
-import lombok.Data;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,5 +15,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Vet extends Person {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5650276671164641942L;
+	
+	private Set<Specialty> specialties;
 
 }
