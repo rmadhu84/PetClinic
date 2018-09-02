@@ -19,4 +19,9 @@ public class IndexController {
 	public String index(Model model) {
 		return "index";
 	}
+	
+	@RequestMapping("/oups")
+	public String oupsHandler() {
+		return "NotImplemented";
+	}
 }
