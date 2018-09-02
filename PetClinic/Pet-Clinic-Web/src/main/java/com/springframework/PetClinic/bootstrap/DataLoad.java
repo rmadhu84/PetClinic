@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.springframework.PetClinic.Model.Owner;
 import com.springframework.PetClinic.Model.Pet;
 import com.springframework.PetClinic.Model.PetType;
+import com.springframework.PetClinic.Model.Speciality;
 import com.springframework.PetClinic.Model.Vet;
 import com.springframework.PetClinic.services.OwnerService;
 import com.springframework.PetClinic.services.PetService;
@@ -62,6 +63,10 @@ public class DataLoad implements CommandLineRunner {
 		cat = petTypeService.save(cat);
 		System.out.println("Cat Pet Type Created...");
 		
+		PetType parakket = new PetType();
+		parakket.setName("Parekeet");
+		parakket = petTypeService.save(parakket);
+		System.out.println("Cat Pet Type Created...");
 		
 		Owner owner1 = new Owner();
 //		owner1.setId(1L);
@@ -89,7 +94,7 @@ public class DataLoad implements CommandLineRunner {
 		owner2.setTelephone("517-455-9202");
 		
 		Pet surekhaspet = new Pet();
-		surekhaspet.setPetType(cat);
+		surekhaspet.setPetType(parakket);
 		surekhaspet.setName("Lucky");
 		surekhaspet.setBirthDate(LocalDate.now());
 		owner2.getPets().add(surekhaspet);
@@ -98,22 +103,70 @@ public class DataLoad implements CommandLineRunner {
 		
 		System.out.println("Owner Saved....");
 		
+		Owner owner3 = new Owner();
+		owner3.setFirstName("Mahesh");
+		owner3.setLastName("Shan");
+		owner3.setAddress("2350 Club Meridian Dr");
+		owner3.setCity("Okemos");
+		owner3.setTelephone("517-507-9422");
+		
+		Pet maheshsPet = new Pet();
+
+		maheshsPet.setPetType(parakket);
+		maheshsPet.setName("Brownie");
+		maheshsPet.setBirthDate(LocalDate.now());
+		owner3.getPets().add(maheshsPet);
+		
+		ownerService.save(owner3);
+		System.out.println("Owner Saved....");
+		
 		Vet vet1 = new Vet();
 //		vet1.setId(1L);
 		vet1.setFirstName("John");
 		vet1.setLastName("Doolittle");
+		
+		
+		Speciality johnsSpeciality1 = new Speciality();
+		johnsSpeciality1.setDescription("Animal Welfare");
+		
+		Speciality johnsSpeciality2 = new Speciality();
+		johnsSpeciality2.setDescription("Anesthesia");
+		
+		vet1.getSpecialties().add(johnsSpeciality1);
+		vet1.getSpecialties().add(johnsSpeciality2);
+
 		vetService.save(vet1);
 		System.out.println("Vet Saved ...");
 		
 		Vet vet2 = new Vet();
 //		vet2.setId(2L);
-		vet2.setFirstName("Pet");
-		vet2.setLastName("Doctor");
+		vet2.setFirstName("Katherine");
+		vet2.setLastName("Perkowski");
+		
+		Speciality katesSpeciality1 = new Speciality();
+		katesSpeciality1.setDescription("Animal Welfare");
+		
+		Speciality katesSpeciality2 = new Speciality();
+		katesSpeciality2.setDescription("Internal Medicine");
+		
+		vet2.getSpecialties().add(katesSpeciality1);
+		vet2.getSpecialties().add(katesSpeciality2);
+		
 		vetService.save(vet2);
 		System.out.println("Vet Saved....");
 		
+		ownerService.findAll().forEach(owner -> {
+			System.out.println(owner.getFirstName() +" "+owner.getLastName());
+			owner.getPets().forEach(pet ->{
+				System.out.println("\t" + pet.getName() + " " + pet.getPetType().getName());
+			});
+		});
+		
 		for(Vet v : vetService.findAll()) {
 			System.out.println(v.getFirstName());
+			v.getSpecialties().forEach(s -> {
+				System.out.println("------->"+ s.getDescription());
+			});
 		}
 
 	}

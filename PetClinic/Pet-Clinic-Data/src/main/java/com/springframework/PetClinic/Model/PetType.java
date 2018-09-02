@@ -2,6 +2,7 @@ package com.springframework.PetClinic.Model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -9,4 +10,5 @@ import lombok.Setter;
 public class PetType extends BaseEntity {
 
 	private String name;
+	
 }

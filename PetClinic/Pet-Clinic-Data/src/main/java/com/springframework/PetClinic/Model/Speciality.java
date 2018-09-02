@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Specialty extends BaseEntity {
+public class Speciality extends BaseEntity {
 	/**
 	 * 
 	 */
