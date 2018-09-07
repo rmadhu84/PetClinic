@@ -30,5 +30,7 @@ public class Visit extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="pet_id")
-	private Pet Pet;
+	private Pet pet;
+	
+	
 }
