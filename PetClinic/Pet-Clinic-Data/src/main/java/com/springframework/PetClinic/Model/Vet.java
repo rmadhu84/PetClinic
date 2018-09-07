@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -35,8 +36,10 @@ public class Vet extends Person {
 	 */
 	private static final long serialVersionUID = -5650276671164641942L;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinTable(name ="vets_specialities", joinColumns = @JoinColumn(name="speciality_id"), inverseJoinColumns=@JoinColumn(name="vet_id") )
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name ="vet_specialities", 
+	           joinColumns = @JoinColumn(name="speciality_id"), 
+	           inverseJoinColumns=@JoinColumn(name="vet_id") )
 	private Set<Speciality> specialties = new HashSet<Speciality>();
 	
 }
