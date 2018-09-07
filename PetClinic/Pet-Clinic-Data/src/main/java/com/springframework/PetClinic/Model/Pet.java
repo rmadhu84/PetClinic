@@ -4,11 +4,15 @@
 package com.springframework.PetClinic.Model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.security.auth.callback.LanguageCallback;
 
@@ -39,4 +43,7 @@ public class Pet extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private Owner owner;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="pet")
+	private Set<Visit> visits = new HashSet<Visit>();
 }
