@@ -12,5 +12,5 @@ import com.springframework.PetClinic.Model.Owner;
  *
  */
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
-
+	Owner findByLastName(String lastName);
 }
