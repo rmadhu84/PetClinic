@@ -4,7 +4,6 @@
 package com.springframework.PetClinic.services.springdatajpa;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
