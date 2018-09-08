@@ -13,6 +13,7 @@ import com.springframework.PetClinic.services.PetTypeService;
 
 @Service
 @Profile("jpa")
+
 public class PetTypeSDJPAServiceImpl implements PetTypeService {
 	
 	private final PetTypeRepository petTypeRepo;
