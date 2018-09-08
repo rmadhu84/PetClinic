@@ -14,9 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.security.auth.callback.LanguageCallback;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,5 +43,5 @@ public class Pet extends BaseEntity{
 	private Owner owner;
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
-    private Set<Visit> vists = new HashSet<>();
+    private Set<Visit> visits = new HashSet<>();
 }

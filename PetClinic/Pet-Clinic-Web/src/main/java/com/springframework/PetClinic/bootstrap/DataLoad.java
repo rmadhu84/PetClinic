@@ -4,7 +4,6 @@
 package com.springframework.PetClinic.bootstrap;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,14 +14,12 @@ import com.springframework.PetClinic.Model.Pet;
 import com.springframework.PetClinic.Model.PetType;
 import com.springframework.PetClinic.Model.Speciality;
 import com.springframework.PetClinic.Model.Vet;
+import com.springframework.PetClinic.Model.Visit;
 import com.springframework.PetClinic.services.OwnerService;
-import com.springframework.PetClinic.services.PetService;
 import com.springframework.PetClinic.services.PetTypeService;
 import com.springframework.PetClinic.services.SpecialityService;
 import com.springframework.PetClinic.services.VetService;
-import com.springframework.PetClinic.services.map.OwnerServiceMap;
-import com.springframework.PetClinic.services.map.PetServiceMap;
-import com.springframework.PetClinic.services.map.VetServiceMap;
+import com.springframework.PetClinic.services.VisitService;
 
 /**
  * @author Madhu
@@ -36,22 +33,8 @@ public class DataLoad implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
+	private final VisitService visitService;
 
-
-	/**
-	 * @param ownerService
-	 * @param vetService
-	 * @param petTypeService
-	 * @param specialityService
-	 */
-	public DataLoad(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-			SpecialityService specialityService) {
-		super();
-		this.ownerService = ownerService;
-		this.vetService = vetService;
-		this.petTypeService = petTypeService;
-		this.specialityService = specialityService;
-	}
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -103,10 +86,20 @@ public class DataLoad implements CommandLineRunner {
 		madhuspet.setPetType(dog);
 		madhuspet.setName("Brownie");
 		madhuspet.setBirthDate(LocalDate.now());
+		madhuspet.setOwner(owner1);
 		owner1.getPets().add(madhuspet);
 		
 		ownerService.save(owner1);
 		System.out.println("Owner Saved....");
+		
+		
+		Visit dogVisit = new Visit();
+		dogVisit.setPet(madhuspet);
+		dogVisit.setDate(LocalDate.now());
+		dogVisit.setDescription("Sneezy puppy");
+		
+		visitService.save(dogVisit);
+		System.out.println("Visit saved for owner");
 		
 		Owner owner2 = new Owner();
 //		owner2.setId(2L);
@@ -120,6 +113,7 @@ public class DataLoad implements CommandLineRunner {
 		surekhaspet.setPetType(parakket);
 		surekhaspet.setName("Lucky");
 		surekhaspet.setBirthDate(LocalDate.now());
+		surekhaspet.setOwner(owner2);
 		owner2.getPets().add(surekhaspet);
 		
 		ownerService.save(owner2);
@@ -193,6 +187,24 @@ public class DataLoad implements CommandLineRunner {
 				System.out.println("------->"+ s.getDescription());
 			});
 		}
+	}
+
+	/**
+	 * @param ownerService
+	 * @param vetService
+	 * @param petTypeService
+	 * @param specialityService
+	 * @param visitService
+	 */
+	@Autowired
+	public DataLoad(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+			SpecialityService specialityService, VisitService visitService) {
+		super();
+		this.ownerService = ownerService;
+		this.vetService = vetService;
+		this.petTypeService = petTypeService;
+		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
 
 }
