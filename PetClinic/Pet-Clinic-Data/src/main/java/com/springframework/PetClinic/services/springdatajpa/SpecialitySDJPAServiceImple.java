@@ -13,6 +13,7 @@ import com.springframework.PetClinic.services.SpecialityService;
 
 @Service
 @Profile("jpa")
+
 public class SpecialitySDJPAServiceImple implements SpecialityService {
 
 	private final SpecialityRepository specialityRepo;
