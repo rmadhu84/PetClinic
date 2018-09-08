@@ -5,6 +5,8 @@ package com.springframework.PetClinic.services.map;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.springframework.PetClinic.Model.Visit;
 import com.springframework.PetClinic.services.VisitService;
 
@@ -12,6 +14,7 @@ import com.springframework.PetClinic.services.VisitService;
  * @author Madhu
  *
  */
+@Service
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
 
 	@Override
