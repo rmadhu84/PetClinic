@@ -62,17 +62,30 @@ public class DataLoad implements CommandLineRunner {
 		parakket = petTypeService.save(parakket);
 		System.out.println("Parekeet Pet Type Created...");
 		
-		Speciality speciality1 = new Speciality();
-		speciality1.setDescription("Radiology");
-		speciality1 = specialityService.save(speciality1);
+		Speciality radiology = new Speciality();
+		radiology.setDescription("Radiology");
+		radiology = specialityService.save(radiology);
 		
-		Speciality speciality2 = new Speciality();
-		speciality2.setDescription("Dentistry");
-		speciality2 = specialityService.save(speciality2);
+		Speciality denistry = new Speciality();
+		denistry.setDescription("Dentistry");
+		denistry = specialityService.save(denistry);
 		
-		Speciality speciality3 = new Speciality();
-		speciality3.setDescription("Surgery");
-		speciality3 = specialityService.save(speciality3);
+		Speciality surgery = new Speciality();
+		surgery.setDescription("Surgery");
+		surgery = specialityService.save(surgery);
+		
+		Speciality anesthesia = new Speciality();
+		anesthesia.setDescription("Surgery");
+		anesthesia = specialityService.save(anesthesia);
+		
+		Speciality animalWelfare = new Speciality();
+		animalWelfare.setDescription("Surgery");
+		animalWelfare = specialityService.save(animalWelfare);
+		
+		Speciality internalMedicine = new Speciality();
+		internalMedicine.setDescription("Surgery");
+		internalMedicine = specialityService.save(internalMedicine);
+		
 		
 		Owner owner1 = new Owner();
 //		owner1.setId(1L);
@@ -143,15 +156,9 @@ public class DataLoad implements CommandLineRunner {
 		vet1.setLastName("Doolittle");
 		
 		
-		Speciality johnsSpeciality1 = new Speciality();
-		johnsSpeciality1.setDescription("Animal Welfare");
-		
-		Speciality johnsSpeciality2 = new Speciality();
-		johnsSpeciality2.setDescription("Anesthesia");
-		
-		vet1.getSpecialties().add(johnsSpeciality1);
-		vet1.getSpecialties().add(johnsSpeciality2);
-		vet1.getSpecialties().add(speciality1);
+		vet1.getSpecialties().add(internalMedicine);
+		vet1.getSpecialties().add(anesthesia);
+		vet1.getSpecialties().add(radiology);
 
 		vetService.save(vet1);
 		System.out.println("Vet Saved ...");
@@ -161,15 +168,9 @@ public class DataLoad implements CommandLineRunner {
 		vet2.setFirstName("Katherine");
 		vet2.setLastName("Perkowski");
 		
-		Speciality katesSpeciality1 = new Speciality();
-		katesSpeciality1.setDescription("Animal Welfare");
-		
-		Speciality katesSpeciality2 = new Speciality();
-		katesSpeciality2.setDescription("Internal Medicine");
-		
-		vet2.getSpecialties().add(katesSpeciality1);
-		vet2.getSpecialties().add(katesSpeciality2);
-		vet2.getSpecialties().add(speciality2);
+		vet2.getSpecialties().add(internalMedicine);
+		vet2.getSpecialties().add(animalWelfare);
+		vet2.getSpecialties().add(denistry);
 		
 		vetService.save(vet2);
 		System.out.println("Vet Saved....");

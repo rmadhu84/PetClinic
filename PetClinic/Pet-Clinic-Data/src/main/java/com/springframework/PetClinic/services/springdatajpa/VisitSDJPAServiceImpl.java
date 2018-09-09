@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import com.springframework.PetClinic.Model.Visit;
 import com.springframework.PetClinic.Repositories.VisitRepository;
@@ -16,6 +18,8 @@ import com.springframework.PetClinic.services.VisitService;
  * @author Madhu
  *
  */
+@Service
+@Profile("jpa")
 public class VisitSDJPAServiceImpl implements VisitService {
 	
 	private final VisitRepository visitRepo;

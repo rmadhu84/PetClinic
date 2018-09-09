@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -29,7 +30,7 @@ public class Owner extends Person {
 	 */
 	private static final long serialVersionUID = -7684297130966446439L;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="owner", fetch=FetchType.EAGER)
 	private Set<Pet> pets = new HashSet<Pet>();
 	
 	@Column(name="address")
