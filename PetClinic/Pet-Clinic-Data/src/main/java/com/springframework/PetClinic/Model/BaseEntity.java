@@ -10,9 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -21,6 +20,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 	
@@ -29,6 +29,17 @@ public class BaseEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
+	/**
+	 * @param id
+	 */
+	 /* comments: Used explicit constructor instead of @AllArgsContructor, 
+	 *            in order for the Builder pattern to be able to access the inherited Super class properties.
+	 */
+	public BaseEntity(Long id) {
+		super();
+		this.id = id;
+	}
 	
 	
 	
