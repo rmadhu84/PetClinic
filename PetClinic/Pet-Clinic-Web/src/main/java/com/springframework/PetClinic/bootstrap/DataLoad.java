@@ -149,7 +149,7 @@ public class DataLoad implements CommandLineRunner {
 		
 		ownerService.save(owner3);
 		System.out.println("Owner Saved....");
-		
+	
 		Vet vet1 = new Vet();
 //		vet1.setId(1L);
 		vet1.setFirstName("John");
