@@ -11,9 +11,11 @@ import com.springframework.PetClinic.Model.PetType;
 import com.springframework.PetClinic.Repositories.PetTypeRepository;
 import com.springframework.PetClinic.services.PetTypeService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Profile("jpa")
-
+@Slf4j
 public class PetTypeSDJPAServiceImpl implements PetTypeService {
 	
 	private final PetTypeRepository petTypeRepo;
@@ -52,6 +54,7 @@ public class PetTypeSDJPAServiceImpl implements PetTypeService {
 	@Autowired
 	public PetTypeSDJPAServiceImpl(PetTypeRepository petTypeRepo) {
 		super();
+		log.info("Inside PetType JPA Service Implementation");
 		this.petTypeRepo = petTypeRepo;
 	}
 

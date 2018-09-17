@@ -16,19 +16,21 @@ import com.springframework.PetClinic.Repositories.PetRepository;
 import com.springframework.PetClinic.Repositories.PetTypeRepository;
 import com.springframework.PetClinic.services.OwnerService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author Madhu
  *
  */
 @Service
 @Profile("jpa")
+@Slf4j
 public class OwnerSDJPAServiceImpl implements OwnerService {
 
+	
 	private final OwnerRepository ownerRepo;
 	private final PetRepository petRepo;
 	private final PetTypeRepository petTypeRepo;
-	
-	
 	
 	@Override
 	public Set<Owner> findAll() {
@@ -71,6 +73,7 @@ public class OwnerSDJPAServiceImpl implements OwnerService {
 	public OwnerSDJPAServiceImpl(OwnerRepository ownerRepo, 
 			PetRepository petRepo, PetTypeRepository petTypeRepo) {
 		super();
+		log.info("Inside Owner Service JPA implementation"); 
 		this.ownerRepo = ownerRepo;
 		this.petRepo = petRepo;
 		this.petTypeRepo = petTypeRepo;

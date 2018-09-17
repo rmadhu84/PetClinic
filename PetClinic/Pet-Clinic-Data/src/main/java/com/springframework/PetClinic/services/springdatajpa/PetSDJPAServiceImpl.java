@@ -11,6 +11,9 @@ import com.springframework.PetClinic.Model.Pet;
 import com.springframework.PetClinic.Repositories.PetRepository;
 import com.springframework.PetClinic.services.PetService;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 
  * @author Madhu
@@ -19,13 +22,15 @@ import com.springframework.PetClinic.services.PetService;
  */
 @Service
 @Profile("jpa")
-
+@Slf4j
+@Data
 public class PetSDJPAServiceImpl implements PetService {
 
 	private final PetRepository petRepo;
 	
 	@Override
 	public Set<Pet> findAll() {
+		
 		Set<Pet> pets = new HashSet<Pet>();
 		petRepo.findAll().forEach(pets::add);
 		return pets;
@@ -57,6 +62,7 @@ public class PetSDJPAServiceImpl implements PetService {
 	@Autowired
 	public PetSDJPAServiceImpl(PetRepository petRepo) {
 		super();
+		log.debug("Inside PetSDJPAServiceImpl");
 		this.petRepo = petRepo;
 	}
 
